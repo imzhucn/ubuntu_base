@@ -9,5 +9,5 @@ echo alias grep='grep --color=auto' >>~/.bashrc
 source ~/.bashrc
 wget -N --no-check-certificate "https://raw.githubusercontent.com/chiakge/Linux-NetSpeed/master/tcp.sh" && chmod +x tcp.sh 
 wget --no-check-certificate https://git.io/v2ray.sh && chmod +x v2ray.sh 
-ll
+ls -l --color=auto
 passwd
