@@ -11,4 +11,7 @@ wget -N --no-check-certificate "https://raw.githubusercontent.com/chiakge/Linux-
 wget --no-check-certificate https://git.io/v2ray.sh && chmod +x v2ray.sh 
 wget --no-check-certificate https://github.com/V2RaySSR/Trojan/raw/master/Trojan.sh && chmod +x Trojan.sh 
 ls -l --color=auto
+ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+ntpdate time.windows.com
+hwclock --systohc
 passwd
