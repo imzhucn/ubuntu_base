@@ -1,3 +1,8 @@
+yum -y update
+yum -y remove openssl openssl-devel cmake
+yum -y install epel-release
+yum -y groupinstall "Development Tools"
+yum -y install certbot wget git libtool perl-core zlib-devel bzip2-devel python-devel openssl
 apt-get -y install wget curl xz-utils nload
 yum install -y wget curl xz-utils nload
 yum install -y psmisc
