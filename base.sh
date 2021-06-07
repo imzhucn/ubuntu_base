@@ -1,4 +1,4 @@
-yum -y update
+#yum -y update
 yum -y remove openssl openssl-devel cmake
 yum -y install epel-release
 yum -y groupinstall "Development Tools"
