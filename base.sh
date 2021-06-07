@@ -21,18 +21,19 @@ ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 ntpdate time.windows.com
 hwclock --systohc
 
-wget https://github.com/fatedier/frp/releases/download/v0.36.0/frp_0.36.0_linux_amd64.tar.gz
+wget https://github.com/fatedier/frp/releases/download/v0.37.0/frp_0.37.0_linux_amd64.tar.gz
 tar zxvf frp_*.tar.gz
+mkdir .frp
 mv frp_0.*linux_amd64 .frp
 rm -rf frp_*.tar.gz
 rm -rf .frp/frpc*
 rm -rf .frp/frps.ini
 
-wget --no-check-certificate https://raw.githubusercontent.com/imzhucn/ubuntu_base/master/.frps.sh
+wget --no-check-certificate https://raw.githubusercontent.com/imzhucn/ubuntu_base/master/frps.sh
 wget --no-check-certificate https://raw.githubusercontent.com/imzhucn/ubuntu_base/master/frps.ini
 mv frps.ini .frp/frps.ini
 wget --no-check-certificate https://raw.githubusercontent.com/imzhucn/ubuntu_base/master/frps.service
-mv frps.service /usr/lib/systemd/system/frps.service
+mv -f frps.service /usr/lib/systemd/system/frps.service
 systemctl daemon-reload
 systemctl enable frps
 vim .frp/frps.ini
