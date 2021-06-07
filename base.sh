@@ -15,6 +15,9 @@ mv Trojan.sh old-trojan.sh
 wget --no-check-certificate https://git.io/trojan-install  && chmod +x trojan-install 
 mv trojan-install new-trojan.sh
 wget --no-check-certificate https://git.io/trojan.txt
+wget --no-check-certificate https://raw.githubusercontent.com/imzhucn/ubuntu_base/master/.frps.sh
+wget --no-check-certificate https://raw.githubusercontent.com/imzhucn/ubuntu_base/master/frps.ini
+
 ls -l --color=auto
 ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 ntpdate time.windows.com
@@ -24,8 +27,9 @@ wget https://github.com/fatedier/frp/releases/download/v0.37.0/frp_0.37.0_linux_
 tar zxvf frp_0.37.0_linux_amd64.tar.gz
 mv frp_0.37.0_linux_amd64 .frp
 rm -rf .frp/frpc*
-
-
+rm -rf .frp/frps.ini
+mv frps.ini .frp/frps.ini
+./frps.sh
 passwd
 
 
