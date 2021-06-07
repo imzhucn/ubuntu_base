@@ -1,5 +1,6 @@
 apt-get -y install wget curl xz-utils nload
 yum install -y wget curl xz-utils nload
+yum install -y psmisc
 sed -i 's/PermitRootLogin no/PermitRootLogin yes/g' /etc/ssh/sshd_config
 sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/g' /etc/ssh/sshd_config
 service sshd restart
