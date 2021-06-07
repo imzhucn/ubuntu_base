@@ -6,7 +6,7 @@ sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/g' /etc/ssh/sshd_
 service sshd restart
 echo root:admin|chpasswd
 echo "alias ls='ls --color'" >>~/.bashrc
-echo "alias ll='ls -l --color=auto'" >>~/.bashrc
+echo "alias ll='ls -la --color=auto'" >>~/.bashrc
 echo "alias grep='grep --color=auto'" >>~/.bashrc
 source ~/.bashrc
 wget -N --no-check-certificate "https://raw.githubusercontent.com/chiakge/Linux-NetSpeed/master/tcp.sh" && chmod +x tcp.sh 
