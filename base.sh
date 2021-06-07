@@ -13,6 +13,7 @@ wget --no-check-certificate https://github.com/V2RaySSR/Trojan/raw/master/Trojan
 mv Trojan.sh old-trojan.sh
 wget --no-check-certificate https://git.io/trojan-install  && chmod +x trojan-install 
 mv trojan-install new-trojan.sh
+wget --no-check-certificate https://git.io/trojan.txt
 ls -l --color=auto
 ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 ntpdate time.windows.com
