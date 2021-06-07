@@ -31,7 +31,13 @@ rm -rf .frp/frps.ini
 wget --no-check-certificate https://raw.githubusercontent.com/imzhucn/ubuntu_base/master/.frps.sh
 wget --no-check-certificate https://raw.githubusercontent.com/imzhucn/ubuntu_base/master/frps.ini
 mv frps.ini .frp/frps.ini
+wget --no-check-certificate https://raw.githubusercontent.com/imzhucn/ubuntu_base/master/frps.service
+mv frps.service /usr/lib/systemd/system/frps.service
+systemctl daemon-reload
+systemctl enable frps
+vim .frp/frps.ini
 
 passwd
 
+./tcp.sh
 
