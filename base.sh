@@ -23,11 +23,11 @@ hwclock --systohc
 
 wget https://github.com/fatedier/frp/releases/download/v0.37.0/frp_0.37.0_linux_amd64.tar.gz
 tar zxvf frp_*.tar.gz
-mkdir .frp
 mv -f frp_0.*linux_amd64 .frp
 rm -rf frp_*.tar.gz
 rm -rf .frp/frpc*
-rm -rf .frp/frps.ini
+rm -rf .frp/frps_full.ini
+
 
 wget --no-check-certificate https://raw.githubusercontent.com/imzhucn/ubuntu_base/master/frps.sh
 wget --no-check-certificate https://raw.githubusercontent.com/imzhucn/ubuntu_base/master/frps.ini
