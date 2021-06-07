@@ -29,10 +29,10 @@ rm -rf .frp/frpc*
 rm -rf .frp/frps_full.ini
 
 
-wget --no-check-certificate https://raw.githubusercontent.com/imzhucn/ubuntu_base/master/frps.sh
+wget --no-check-certificate https://raw.githubusercontent.com/imzhucn/ubuntu_base/master/frps.sh && chmod +x frps.sh
 wget --no-check-certificate https://raw.githubusercontent.com/imzhucn/ubuntu_base/master/frps.ini
 mv -f frps.ini .frp/frps.ini
-wget --no-check-certificate https://raw.githubusercontent.com/imzhucn/ubuntu_base/master/frps.service
+wget --no-check-certificate https://raw.githubusercontent.com/imzhucn/ubuntu_base/master/frps.service && chmod +x frps.service
 mv -f frps.service /usr/lib/systemd/system/frps.service
 systemctl daemon-reload
 systemctl enable frps
