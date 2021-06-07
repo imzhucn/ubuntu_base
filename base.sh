@@ -9,6 +9,7 @@ yum install -y psmisc
 sed -i 's/PermitRootLogin no/PermitRootLogin yes/g' /etc/ssh/sshd_config
 sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/g' /etc/ssh/sshd_config
 service sshd restart
+echo 'wget -qO- sb.oldking.net | bash' >speedtest.sh   && chmod +x speedtest.sh
 echo root:admin|chpasswd
 echo "alias ls='ls --color'" >>~/.bashrc
 echo "alias ll='ls -la --color=auto'" >>~/.bashrc
