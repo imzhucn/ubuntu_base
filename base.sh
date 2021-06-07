@@ -18,6 +18,13 @@ ls -l --color=auto
 ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 ntpdate time.windows.com
 hwclock --systohc
+
+wget https://github.com/fatedier/frp/releases/download/v0.37.0/frp_0.37.0_linux_amd64.tar.gz
+tar zxvf frp_0.37.0_linux_amd64.tar.gz
+mv frp_0.37.0_linux_amd64 .frp
+rm -rf .frp/frpc*
+
+
 passwd
 
 
