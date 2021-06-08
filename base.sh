@@ -1,8 +1,5 @@
 #yum -y update
-yum -y remove openssl openssl-devel cmake
-yum -y install epel-release
-yum -y groupinstall "Development Tools"
-yum -y install certbot wget git libtool perl-core zlib-devel bzip2-devel python-devel openssl
+
 apt-get -y install wget curl xz-utils nload
 yum install -y wget curl xz-utils nload
 yum install -y psmisc
@@ -42,27 +39,32 @@ wget --no-check-certificate https://raw.githubusercontent.com/imzhucn/ubuntu_bas
 mv -f frps.service /usr/lib/systemd/system/frps.service
 systemctl daemon-reload
 systemctl enable frps
-vim .frp/frps.ini
+#vim .frp/frps.ini
 
 
-sed -i 's:/usr/local/bin/trojan web -p 81:/usr/local/bin/trojan web:g' /etc/systemd/system/trojan-web.service
-sed -i 's:/usr/local/bin/trojan web -p 81:/usr/local/bin/trojan web:g' /etc/systemd/system/trojan-web.service
-sed -i 's:/usr/local/bin/trojan web -p 81:/usr/local/bin/trojan web:g' /etc/systemd/system/trojan-web.service
-sed -i 's:/usr/local/bin/trojan web:/usr/local/bin/trojan web -p 81:g' /etc/systemd/system/trojan-web.service
-systemctl daemon-reload
-systemctl restart trojan-web
+#sed -i 's:/usr/local/bin/trojan web -p 81:/usr/local/bin/trojan web:g' /etc/systemd/system/trojan-web.service
+#sed -i 's:/usr/local/bin/trojan web -p 81:/usr/local/bin/trojan web:g' /etc/systemd/system/trojan-web.service
+#sed -i 's:/usr/local/bin/trojan web -p 81:/usr/local/bin/trojan web:g' /etc/systemd/system/trojan-web.service
+#sed -i 's:/usr/local/bin/trojan web:/usr/local/bin/trojan web -p 81:g' /etc/systemd/system/trojan-web.service
+#systemctl daemon-reload
+#systemctl restart trojan-web
 
-yum install -y nginx
+#yum install -y nginx
 
 #sed -i 's:/usr/share/nginx/html:/root/www:g' /etc/nginx/nginx.conf
 #wget https://github.com/imzhucn/ubuntu_base/raw/master/web.zip
 #unzip web.zip
 #mv -f /usr/share/nginx/html /usr/share/nginx/html_old
 #mv -f web /usr/share/nginx/html
-systemctl enable nginx.service
-systemctl restart nginx
-systemctl status nginx
+#systemctl enable nginx.service
+#systemctl restart nginx
+#systemctl status nginx
 
+
+yum -y remove openssl openssl-devel cmake
+yum -y install epel-release
+yum -y groupinstall "Development Tools"
+yum -y install certbot wget git libtool perl-core zlib-devel bzip2-devel python-devel openssl
 
 passwd
 
