@@ -65,7 +65,7 @@ yum -y remove openssl openssl-devel cmake
 yum -y install epel-release
 yum -y groupinstall "Development Tools"
 yum -y install certbot wget git libtool perl-core zlib-devel bzip2-devel python-devel openssl
-acme.sh --set-default-ca --server letsencrypt
+echo "acme.sh --set-default-ca --server letsencrypt" >>~/acme.sh && chmod +x acme.sh && bash acme.sh
 passwd
 
 ./tcp.sh
