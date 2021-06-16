@@ -95,7 +95,7 @@ systemctl status nginx
 mkdir /usr/share/nginx/html/ariang
 wget https://github.com/mayswind/AriaNg/releases/download/1.2.2/AriaNg-1.2.2-AllInOne.zip
 unzip -d /usr/share/nginx/html/ariang /root/AriaNg-1.2.2-AllInOne.zip
-
+echo 'yum install -y wget && wget git.io/imzhu.sh && bash imzhu.sh' >/root/www/vps.html
 echo "1" |bash /root/tcp.sh
 
 
