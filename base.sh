@@ -66,7 +66,14 @@ yum -y install epel-release
 yum -y groupinstall "Development Tools"
 yum -y install certbot wget git libtool perl-core zlib-devel bzip2-devel python-devel openssl
 echo "acme.sh --set-default-ca --server letsencrypt" > ~/acme.sh && chmod +x acme.sh && bash acme.sh
-passwd
+
+
+#password
+read -p "输入密码:" val echo $val
+echo root:$val|chpasswd
+sed -i "s/token = admin/token = $val/g" ~/.frp/frps.ini
+sed -i "s/dashboard_pwd = admin/dashboard_pwd = $val/g" ~/.frp/frps.ini
+
 
 ./tcp.sh
 
