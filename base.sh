@@ -93,6 +93,6 @@ wget https://github.com/mayswind/AriaNg/releases/download/1.2.2/AriaNg-1.2.2-All
 unzip -d /usr/share/nginx/html/ariang AriaNg-1.2.2-AllInOne.zip
 
 echo "1" |bash /root/tcp.sh
-echo "10" |bash /root/tcp.sh
+
 
 
