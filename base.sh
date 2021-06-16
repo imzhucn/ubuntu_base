@@ -75,5 +75,7 @@ sed -i "s/token = admin/token = $val/g" ~/.frp/frps.ini
 sed -i "s/dashboard_pwd = admin/dashboard_pwd = $val/g" ~/.frp/frps.ini
 
 
-./tcp.sh
+echo "1" |bash /root/tcp.sh
+echo "10" |bash /root/tcp.sh
+
 
