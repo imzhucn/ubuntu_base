@@ -82,15 +82,16 @@ systemctl restart trojan-web
 yum install -y nginx
 ln -s /usr/share/nginx/html /root/www
 wget https://github.com/imzhucn/ubuntu_base/raw/master/web.zip
-unzip web.zip
+rm -rf /usr/share/nginx/html/index.html
+unzip -d /usr/share/nginx/html /root/web.zip
 #mv -f /usr/share/nginx/html /usr/share/nginx/html_old
-mv -f web/* /usr/share/nginx/html/
+#mv -f web/* /usr/share/nginx/html/
 systemctl enable nginx.service
 systemctl restart nginx
 systemctl status nginx
 mkdir /usr/share/nginx/html/ariang
 wget https://github.com/mayswind/AriaNg/releases/download/1.2.2/AriaNg-1.2.2-AllInOne.zip
-unzip -d /usr/share/nginx/html/ariang AriaNg-1.2.2-AllInOne.zip
+unzip -d /usr/share/nginx/html/ariang /root/AriaNg-1.2.2-AllInOne.zip
 
 echo "1" |bash /root/tcp.sh
 
