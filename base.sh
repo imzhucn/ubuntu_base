@@ -6,7 +6,7 @@ yum install -y psmisc
 sed -i 's/PermitRootLogin no/PermitRootLogin yes/g' /etc/ssh/sshd_config
 sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/g' /etc/ssh/sshd_config
 service sshd restart
-echo 'wget -qO- sb.oldking.net | bash' >speedtest.sh   && chmod +x speedtest.sh
+#echo 'wget -qO- sb.oldking.net | bash' >speedtest.sh   && chmod +x speedtest.sh
 echo root:admin|chpasswd
 echo "alias ls='ls --color'" >>~/.bashrc
 echo "alias ll='ls -la --color=auto'" >>~/.bashrc
@@ -61,11 +61,11 @@ systemctl enable frps
 #systemctl status nginx
 
 
-yum -y remove openssl openssl-devel cmake
-yum -y install epel-release
-yum -y groupinstall "Development Tools"
-yum -y install certbot wget git libtool perl-core zlib-devel bzip2-devel python-devel openssl
-echo "acme.sh --set-default-ca --server letsencrypt" > ~/acme.sh && chmod +x acme.sh && bash acme.sh
+#yum -y remove openssl openssl-devel cmake
+#yum -y install epel-release
+#yum -y groupinstall "Development Tools"
+#yum -y install certbot wget git libtool perl-core zlib-devel bzip2-devel python-devel openssl
+#echo "acme.sh --set-default-ca --server letsencrypt" > ~/acme.sh && chmod +x acme.sh && bash acme.sh
 
 
 #password
