@@ -1,3 +1,4 @@
+read -p "输入密码:" val echo $val
 #yum -y update
 yum -y remove openssl openssl-devel cmake
 yum -y install epel-release
@@ -72,7 +73,7 @@ systemctl enable frps
 
 
 #password
-read -p "输入密码:" val echo $val
+#read -p "输入密码:" val echo $val
 echo root:$val|chpasswd
 sed -i "s/token = admin/token = $val/g" ~/.frp/frps.ini
 sed -i "s/dashboard_pwd = admin/dashboard_pwd = $val/g" ~/.frp/frps.ini
