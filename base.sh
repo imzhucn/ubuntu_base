@@ -85,7 +85,7 @@ echo -e "\033[1;32m 改ROOT密码 \033[0m"
 ##开始安装trojan和nginx
 echo && echo && echo
 echo -e "\033[1;32m 开始安装trojan和nginx \033[0m"
-bash /root/new-trojan.sh
+echo "1" |bash /root/new-trojan.sh
 sed -i 's:/usr/local/bin/trojan web -p 81:/usr/local/bin/trojan web:g' /etc/systemd/system/trojan-web.service
 sed -i 's:/usr/local/bin/trojan web:/usr/local/bin/trojan web -p 81:g' /etc/systemd/system/trojan-web.service
 systemctl daemon-reload
@@ -129,7 +129,7 @@ chkconfig --del cloudmonitor
 ##开始安装BBR加速
 echo && echo && echo
 echo -e "\033[1;32m 开始安装BBR加速 \033[0m"
-echo "" |bash tcp.sh
+echo "1" |bash tcp.sh
 
 
 
