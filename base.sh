@@ -41,6 +41,8 @@ wget --no-check-certificate https://raw.githubusercontent.com/imzhucn/ubuntu_bas
 mv -f frps.ini .frp/frps.ini
 wget --no-check-certificate https://raw.githubusercontent.com/imzhucn/ubuntu_base/master/frps.service && chmod +x frps.service
 mv -f frps.service /usr/lib/systemd/system/frps.service
+sed -i "s/token = admin/token = $val/g" ~/.frp/frps.ini
+sed -i "s/dashboard_pwd = admin/dashboard_pwd = $val/g" ~/.frp/frps.ini
 systemctl daemon-reload
 systemctl enable frps
 
@@ -65,19 +67,16 @@ systemctl enable frps
 #systemctl status nginx
 
 
-#yum -y remove openssl openssl-devel cmake
-#yum -y install epel-release
-#yum -y groupinstall "Development Tools"
-#yum -y install certbot wget git libtool perl-core zlib-devel bzip2-devel python-devel openssl
-#echo "acme.sh --set-default-ca --server letsencrypt" > ~/acme.sh && chmod +x acme.sh && bash acme.sh
 
-
-#password
+#改ROOT密码
+echo -e "\033[1;32m 改ROOT密码 \033[0m"
 #read -p "输入密码:" val echo $val
 echo root:$val|chpasswd
-sed -i "s/token = admin/token = $val/g" ~/.frp/frps.ini
-sed -i "s/dashboard_pwd = admin/dashboard_pwd = $val/g" ~/.frp/frps.ini
 
+
+
+##开始安装trojan和nginx
+echo -e "\033[1;32m 开始安装trojan和nginx \033[0m"
 bash /root/new-trojan.sh
 sed -i 's:/usr/local/bin/trojan web -p 81:/usr/local/bin/trojan web:g' /etc/systemd/system/trojan-web.service
 sed -i 's:/usr/local/bin/trojan web:/usr/local/bin/trojan web -p 81:g' /etc/systemd/system/trojan-web.service
@@ -88,12 +87,36 @@ ln -s /usr/share/nginx/html /root/www
 wget https://github.com/imzhucn/ubuntu_base/raw/master/web.zip
 rm -rf /usr/share/nginx/html/index.html
 unzip -d /usr/share/nginx/html /root/web.zip
-
 systemctl enable nginx.service
 systemctl restart nginx
 systemctl status nginx
 
-echo "1" |bash /root/new-trojan.sh
+
+##卸载阿里云盾
+echo -e "\033[1;32m 卸载阿里云盾 \033[0m"
+wget http://update.aegis.aliyun.com/download/uninstall.sh &&bash uninstall.sh && rm -rf uninstall.sh
+wget http://update.aegis.aliyun.com/download/quartz_uninstall.sh && bash quartz_uninstall.sh && rm -rf quartz_uninstall.sh
+pkill aliyun-service
+rm -fr /etc/init.d/agentwatch /usr/sbin/aliyun-service
+rm -rf /usr/local/aegis*
+iptables -I INPUT -s 140.205.201.0/28 -j DROP
+iptables -I INPUT -s 140.205.201.16/29 -j DROP
+iptables -I INPUT -s 140.205.201.32/28 -j DROP
+iptables -I INPUT -s 140.205.225.192/29 -j DROP
+iptables -I INPUT -s 140.205.225.200/30 -j DROP
+iptables -I INPUT -s 140.205.225.184/29 -j DROP
+iptables -I INPUT -s 140.205.225.183/32 -j DROP
+iptables -I INPUT -s 140.205.225.206/32 -j DROP
+iptables -I INPUT -s 140.205.225.205/32 -j DROP
+iptables -I INPUT -s 140.205.225.195/32 -j DROP
+iptables -I INPUT -s 140.205.225.204/32 -j DROP
+rm -rf /usr/sbin/aliyun*
+chkconfig --del cloudmonitor
+
+
+##开始安装BBR加速
+echo -e "\033[1;32m 开始安装BBR加速 \033[0m"
+echo "1" |bash tcp
 
 
 
