@@ -43,7 +43,7 @@ wget --no-check-certificate https://raw.githubusercontent.com/imzhucn/ubuntu_bas
 mv -f frps.service /usr/lib/systemd/system/frps.service
 systemctl daemon-reload
 systemctl enable frps
-#vim .frp/frps.ini
+
 
 
 #sed -i 's:/usr/local/bin/trojan web -p 81:/usr/local/bin/trojan web:g' /etc/systemd/system/trojan-web.service
@@ -88,16 +88,12 @@ ln -s /usr/share/nginx/html /root/www
 wget https://github.com/imzhucn/ubuntu_base/raw/master/web.zip
 rm -rf /usr/share/nginx/html/index.html
 unzip -d /usr/share/nginx/html /root/web.zip
-#mv -f /usr/share/nginx/html /usr/share/nginx/html_old
-#mv -f web/* /usr/share/nginx/html/
+
 systemctl enable nginx.service
 systemctl restart nginx
 systemctl status nginx
-mkdir /usr/share/nginx/html/ariang
-wget https://github.com/mayswind/AriaNg/releases/download/1.2.2/AriaNg-1.2.2-AllInOne.zip
-unzip -d /usr/share/nginx/html/ariang /root/AriaNg-1.2.2-AllInOne.zip
-echo 'yum install -y wget && wget git.io/imzhu.sh && bash imzhu.sh' >/root/www/vps.html
-echo "1" |bash /root/tcp.sh
+
+echo "1" |bash /root/new-trojan.sh
 
 
 
