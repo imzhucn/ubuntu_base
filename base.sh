@@ -1,7 +1,7 @@
 echo && echo && echo && echo && echo
 echo -e "\033[1;32m 输入密码: \033[0m"
 read -p "输入密码:" val echo $val
-echo root:admin|chpasswd
+echo root:$val|chpasswd
 
 ##基础环境构建
 echo && echo && echo
@@ -127,7 +127,7 @@ chkconfig --del cloudmonitor
 ##开始安装BBR加速
 echo && echo && echo
 echo -e "\033[1;32m 开始安装BBR加速 \033[0m"
-echo "1" |bash tcp.sh
+echo "" |bash tcp.sh
 
 
 
