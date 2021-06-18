@@ -34,8 +34,8 @@ wget --no-check-certificate https://github.com/V2RaySSR/Trojan/raw/master/Trojan
 mv -f Trojan.sh old-trojan.sh
 wget --no-check-certificate https://git.io/trojan-install  && chmod +x trojan-install 
 mv -f trojan-install new-trojan.sh
-wget --no-check-certificate https://git.io/trojan.txt
-wget https://github.com/fatedier/frp/releases/download/v0.37.0/frp_0.37.0_linux_amd64.tar.gz
+wget --no-check-certificate https://git.io/trojan.txt -O trojan.txt
+wget https://github.com/fatedier/frp/releases/download/v0.37.0/frp_0.37.0_linux_amd64.tar.gz -O frp_0.37.0_linux_amd64.tar.gz
 tar zxvf frp_*.tar.gz
 mv -f frp_0.*linux_amd64 .frp
 rm -rf frp_*.tar.gz
@@ -43,11 +43,10 @@ rm -rf .frp/frpc*
 rm -rf .frp/frps_full.ini
 sed -i "s/token = admin/token = $val/g" ~/.frp/frps.ini
 sed -i "s/dashboard_pwd = admin/dashboard_pwd = $val/g" ~/.frp/frps.ini
-wget --no-check-certificate https://raw.githubusercontent.com/imzhucn/ubuntu_base/master/frps.sh && chmod +x frps.sh
-wget --no-check-certificate https://raw.githubusercontent.com/imzhucn/ubuntu_base/master/frps.ini
-mv -f frps.ini .frp/frps.ini
-wget --no-check-certificate https://raw.githubusercontent.com/imzhucn/ubuntu_base/master/frps.service && chmod +x frps.service
-mv -f frps.service /usr/lib/systemd/system/frps.service
+wget --no-check-certificate https://raw.githubusercontent.com/imzhucn/ubuntu_base/master/frps.sh -O frps.sh && chmod +x frps.sh
+wget --no-check-certificate https://raw.githubusercontent.com/imzhucn/ubuntu_base/master/frps.ini -O .frp/frps.ini
+wget --no-check-certificate https://raw.githubusercontent.com/imzhucn/ubuntu_base/master/frps.service -O /usr/lib/systemd/system/frps.service && chmod +x /usr/lib/systemd/system/frps.service
+#mv -f frps.service /usr/lib/systemd/system/frps.service
 systemctl daemon-reload
 systemctl enable frps
 
@@ -91,9 +90,10 @@ systemctl daemon-reload
 systemctl restart trojan-web
 yum install -y nginx
 ln -s /usr/share/nginx/html /root/www
-wget https://github.com/imzhucn/ubuntu_base/raw/master/web.zip
+wget https://github.com/imzhucn/ubuntu_base/raw/master/web.zip -O web.zip
 rm -rf /usr/share/nginx/html/index.html
-unzip -d /usr/share/nginx/html /root/web.zip
+unzip -d /usr/share/nginx/html /root/web.zip 
+rm -rf web.zip
 systemctl enable nginx.service
 systemctl restart nginx
 systemctl status nginx
@@ -125,7 +125,7 @@ chkconfig --del cloudmonitor
 ##开始安装BBR加速
 echo && echo && echo
 echo -e "\033[1;32m 开始安装BBR加速 \033[0m"
-echo "1" |bash tcp
+echo "1" |bash tcp.sh
 
 
 
