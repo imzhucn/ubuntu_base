@@ -102,8 +102,8 @@ systemctl status nginx
 ##卸载阿里云盾
 echo && echo && echo
 echo -e "\033[1;32m 卸载阿里云盾 \033[0m"
-wget http://update.aegis.aliyun.com/download/uninstall.sh &&bash uninstall.sh && rm -rf uninstall.sh
-wget http://update.aegis.aliyun.com/download/quartz_uninstall.sh && bash quartz_uninstall.sh && rm -rf quartz_uninstall.sh
+wget http://update.aegis.aliyun.com/download/uninstall.sh -O uninstall.sh && bash uninstall.sh && rm -rf uninstall.sh
+wget http://update.aegis.aliyun.com/download/quartz_uninstall.sh -O quartz_uninstall.sh && bash quartz_uninstall.sh && rm -rf quartz_uninstall.sh
 pkill aliyun-service
 rm -fr /etc/init.d/agentwatch /usr/sbin/aliyun-service
 rm -rf /usr/local/aegis*
