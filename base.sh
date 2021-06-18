@@ -3,7 +3,7 @@ echo -e "\033[1;32m 输入密码: \033[0m"
 read -p "输入密码:" val echo $val
 echo root:admin|chpasswd
 
-
+##基础环境构建
 echo && echo && echo
 echo -e "\033[1;32m 基础环境构建 \033[0m"
 #yum -y update
@@ -26,7 +26,7 @@ ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 ntpdate time.windows.com
 hwclock --systohc
 
-
+##下载相关文件
 echo && echo && echo
 echo -e "\033[1;32m 下载相关文件 \033[0m"
 wget -N --no-check-certificate "https://raw.githubusercontent.com/chiakge/Linux-NetSpeed/master/tcp.sh" && chmod +x tcp.sh 
@@ -73,7 +73,8 @@ systemctl enable frps
 
 
 
-#改ROOT密码
+##改ROOT密码
+echo && echo && echo
 echo -e "\033[1;32m 改ROOT密码 \033[0m"
 #read -p "输入密码:" val echo $val
 echo root:$val|chpasswd
@@ -81,6 +82,7 @@ echo root:$val|chpasswd
 
 
 ##开始安装trojan和nginx
+echo && echo && echo
 echo -e "\033[1;32m 开始安装trojan和nginx \033[0m"
 bash /root/new-trojan.sh
 sed -i 's:/usr/local/bin/trojan web -p 81:/usr/local/bin/trojan web:g' /etc/systemd/system/trojan-web.service
@@ -98,6 +100,7 @@ systemctl status nginx
 
 
 ##卸载阿里云盾
+echo && echo && echo
 echo -e "\033[1;32m 卸载阿里云盾 \033[0m"
 wget http://update.aegis.aliyun.com/download/uninstall.sh &&bash uninstall.sh && rm -rf uninstall.sh
 wget http://update.aegis.aliyun.com/download/quartz_uninstall.sh && bash quartz_uninstall.sh && rm -rf quartz_uninstall.sh
@@ -120,6 +123,7 @@ chkconfig --del cloudmonitor
 
 
 ##开始安装BBR加速
+echo && echo && echo
 echo -e "\033[1;32m 开始安装BBR加速 \033[0m"
 echo "1" |bash tcp
 
