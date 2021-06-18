@@ -1,4 +1,6 @@
+##改ROOT密码
 echo && echo && echo && echo && echo
+echo -e "\033[1;32m 改ROOT密码 \033[0m"
 echo -e "\033[1;32m 输入密码: \033[0m"
 read -p "输入密码:" val echo $val
 echo root:$val|chpasswd
@@ -76,7 +78,7 @@ systemctl enable frps
 echo && echo && echo
 echo -e "\033[1;32m 改ROOT密码 \033[0m"
 #read -p "输入密码:" val echo $val
-echo root:$val|chpasswd
+#echo root:$val|chpasswd
 
 
 
