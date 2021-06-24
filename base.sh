@@ -85,7 +85,7 @@ echo -e "\033[1;32m 改ROOT密码 \033[0m"
 ##开始安装trojan和nginx
 echo && echo && echo
 echo -e "\033[1;32m 开始安装trojan和nginx \033[0m"
-echo "1" |bash /root/new-trojan.sh
+bash /root/new-trojan.sh
 sed -i 's:/usr/local/bin/trojan web -p 81:/usr/local/bin/trojan web:g' /etc/systemd/system/trojan-web.service
 sed -i 's:/usr/local/bin/trojan web:/usr/local/bin/trojan web -p 81:g' /etc/systemd/system/trojan-web.service
 systemctl daemon-reload
