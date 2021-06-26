@@ -9,7 +9,7 @@ echo root:$val|chpasswd
 echo && echo && echo
 echo -e "\033[1;32m 基础环境构建 \033[0m"
 #yum -y update
-yum -y remove openssl openssl-devel cmake
+#yum -y remove openssl openssl-devel cmake
 yum -y install epel-release
 yum -y groupinstall "Development Tools"
 yum -y install certbot wget git libtool perl-core zlib-devel bzip2-devel python-devel openssl
@@ -31,33 +31,31 @@ hwclock --systohc
 ##下载相关文件
 echo && echo && echo
 echo -e "\033[1;32m 下载相关文件 \033[0m"
-wget https://raw.githubusercontent.com/imzhucn/ubuntu_base/master/clash.sh -O clash.sh && chmod +x clash.sh
 wget https://raw.githubusercontent.com/chiakge/Linux-NetSpeed/master/tcp.sh -O tcp.sh && chmod +x tcp.sh 
 wget https://github.com/V2RaySSR/Trojan/raw/master/Trojan.sh -O old-trojan.sh && chmod +x old-trojan.sh 
-wget --no-check-certificate https://git.io/trojan-install -O new-trojan.sh && chmod +x new-trojan.sh 
-wget --no-check-certificate https://git.io/trojan.txt -O trojan.txt
+wget https://git.io/trojan-install -O new-trojan.sh && chmod +x new-trojan.sh 
+wget https://git.io/trojan.txt -O trojan.txt
 wget https://github.com/fatedier/frp/releases/download/v0.37.0/frp_0.37.0_linux_amd64.tar.gz -O frp_0.37.0_linux_amd64.tar.gz
 tar zxvf frp_*.tar.gz
+rm -rf .frp
 mv -f frp_0.*linux_amd64 .frp
 rm -rf frp_*.tar.gz
 rm -rf .frp/frpc*
 rm -rf .frp/frps_full.ini
-sed -i "s/token = admin/token = $val/g" ~/.frp/frps.ini
-sed -i "s/dashboard_pwd = admin/dashboard_pwd = $val/g" ~/.frp/frps.ini
 wget --no-check-certificate https://raw.githubusercontent.com/imzhucn/ubuntu_base/master/frps.sh -O frps.sh && chmod +x frps.sh
 wget --no-check-certificate https://raw.githubusercontent.com/imzhucn/ubuntu_base/master/frps.ini -O .frp/frps.ini
 wget --no-check-certificate https://raw.githubusercontent.com/imzhucn/ubuntu_base/master/frps.service -O /usr/lib/systemd/system/frps.service && chmod +x /usr/lib/systemd/system/frps.service
-#mv -f frps.service /usr/lib/systemd/system/frps.service
+#echo -e "\033[1;32m 改密码前 \033[0m"
+#cat ~/.frp/frps.ini
+#sleep 10
+sed -i "s/token = admin/token = $val/g" ~/.frp/frps.ini
+sed -i "s/dashboard_pwd = admin/dashboard_pwd = $val/g" ~/.frp/frps.ini
+#sleep 3
+#echo -e "\033[1;32m 改密码后 \033[0m"
+#cat ~/.frp/frps.ini
+#sleep 30
 systemctl daemon-reload
 systemctl enable frps
-
-
-##改ROOT密码
-echo && echo && echo
-echo -e "\033[1;32m 改ROOT密码 \033[0m"
-#read -p "输入密码:" val echo $val
-#echo root:$val|chpasswd
-
 
 
 ##开始安装trojan和nginx
@@ -81,6 +79,7 @@ wget https://github.com/Fndroid/clash_for_windows_pkg/releases/download/0.15.10/
 wget https://github.com/Kr328/ClashForAndroid/releases/download/v2.3.22/app-arm64-v8a-release.apk -O /usr/share/nginx/html/app-arm64-v8a-release.apk
 wget https://github.com/Kr328/ClashForAndroid/releases/download/v2.3.22/app-armeabi-v7a-release.apk -O /usr/share/nginx/html/app-armeabi-v7a-release.apk
 wget https://raw.githubusercontent.com/imzhucn/ubuntu_base/master/clash.yaml -O /usr/share/nginx/html/clash.yaml
+wget https://raw.githubusercontent.com/imzhucn/ubuntu_base/master/clash.sh -O clash.sh && chmod +x clash.sh
 
 ##卸载阿里云盾
 echo && echo && echo
