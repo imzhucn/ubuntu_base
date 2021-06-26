@@ -102,6 +102,7 @@ systemctl status nginx
 wget https://github.com/Fndroid/clash_for_windows_pkg/releases/download/0.15.10/Clash.for.Windows-0.15.10-win.7z -O /usr/share/nginx/html/Clash.for.Windows-0.15.10-win.7z
 wget https://github.com/Kr328/ClashForAndroid/releases/download/v2.3.22/app-arm64-v8a-release.apk -O /usr/share/nginx/html/app-arm64-v8a-release.apk
 wget https://github.com/Kr328/ClashForAndroid/releases/download/v2.3.22/app-armeabi-v7a-release.apk -O /usr/share/nginx/html/app-armeabi-v7a-release.apk
+wget https://raw.githubusercontent.com/imzhucn/ubuntu_base/master/clash.yaml -O /usr/share/nginx/html/clash.yaml
 
 ##卸载阿里云盾
 echo && echo && echo
