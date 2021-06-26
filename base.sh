@@ -42,9 +42,9 @@ mv -f frp_0.*linux_amd64 .frp
 rm -rf frp_*.tar.gz
 rm -rf .frp/frpc*
 rm -rf .frp/frps_full.ini
-wget --no-check-certificate https://raw.githubusercontent.com/imzhucn/ubuntu_base/master/frps.sh -O frps.sh && chmod +x frps.sh
-wget --no-check-certificate https://raw.githubusercontent.com/imzhucn/ubuntu_base/master/frps.ini -O .frp/frps.ini
-wget --no-check-certificate https://raw.githubusercontent.com/imzhucn/ubuntu_base/master/frps.service -O /usr/lib/systemd/system/frps.service && chmod +x /usr/lib/systemd/system/frps.service
+wget https://raw.githubusercontent.com/imzhucn/ubuntu_base/master/frps.sh -O frps.sh && chmod +x frps.sh
+wget https://raw.githubusercontent.com/imzhucn/ubuntu_base/master/frps.ini -O .frp/frps.ini
+wget https://raw.githubusercontent.com/imzhucn/ubuntu_base/master/frps.service -O /usr/lib/systemd/system/frps.service && chmod +x /usr/lib/systemd/system/frps.service
 #echo -e "\033[1;32m 改密码前 \033[0m"
 #cat ~/.frp/frps.ini
 #sleep 10
@@ -70,7 +70,7 @@ yum install -y nginx
 ln -s /usr/share/nginx/html /root/www
 wget https://github.com/imzhucn/ubuntu_base/raw/master/web.zip -O web.zip
 rm -rf /usr/share/nginx/html/index.html
-unzip -d /usr/share/nginx/html /root/web.zip 
+unzip -o -d /usr/share/nginx/html /root/web.zip 
 rm -rf web.zip
 systemctl enable nginx.service
 systemctl restart nginx
