@@ -1,9 +1,13 @@
+clear
+
 ##改ROOT密码
 echo && echo && echo && echo && echo
 echo -e "\033[1;32m 改ROOT密码 \033[0m"
 echo -e "\033[1;32m 输入密码: \033[0m"
 read -p "输入密码:" val echo $val
 echo root:$val|chpasswd
+
+clear
 
 ##基础环境构建
 echo && echo && echo
@@ -27,6 +31,8 @@ ls -l --color=auto
 ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 ntpdate time.windows.com
 hwclock --systohc
+
+clear
 
 ##下载相关文件
 echo && echo && echo
@@ -57,6 +63,7 @@ sed -i "s/dashboard_pwd = admin/dashboard_pwd = $val/g" ~/.frp/frps.ini
 systemctl daemon-reload
 systemctl enable frps
 
+clear
 
 ##开始安装trojan和nginx
 echo && echo && echo
@@ -81,6 +88,8 @@ wget https://github.com/Kr328/ClashForAndroid/releases/download/v2.3.22/app-arme
 wget https://raw.githubusercontent.com/imzhucn/ubuntu_base/master/clash.yaml -O /usr/share/nginx/html/clash.yaml
 wget https://raw.githubusercontent.com/imzhucn/ubuntu_base/master/clash.sh -O clash.sh && chmod +x clash.sh
 
+clear
+
 ##卸载阿里云盾
 echo && echo && echo
 echo -e "\033[1;32m 卸载阿里云盾 \033[0m"
@@ -103,6 +112,7 @@ iptables -I INPUT -s 140.205.225.204/32 -j DROP
 rm -rf /usr/sbin/aliyun*
 chkconfig --del cloudmonitor
 
+clear
 
 ##开始安装BBR加速
 echo && echo && echo
