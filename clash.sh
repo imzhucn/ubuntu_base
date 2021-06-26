@@ -3,8 +3,7 @@ wangzhi=$(cat hostname.txt)
 echo -e "\n\n 默认网址为：$wangzhi \n 请确认是否正确 \n\n"
 
 else
-echo -e "\n hostname文件不存在 \n\n"
-sleep 2
+echo -e "\033[1;32m 文件不存在 \033[0m"
 read -p "输入网址:" wangzhi
 echo $wangzhi > hostname.txt
 
