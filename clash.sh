@@ -1,5 +1,8 @@
+clear
+
 if [ -f hostname.txt ] ; then
 wangzhi=$(cat hostname.txt)
+
 echo -e "\n\n 默认网址为：$wangzhi \n 请确认是否正确 \n\n"
 
 else
