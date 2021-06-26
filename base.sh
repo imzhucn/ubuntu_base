@@ -31,6 +31,7 @@ hwclock --systohc
 ##下载相关文件
 echo && echo && echo
 echo -e "\033[1;32m 下载相关文件 \033[0m"
+wget https://raw.githubusercontent.com/imzhucn/ubuntu_base/master/clash.sh  && chmod +x clash.sh
 wget -N --no-check-certificate "https://raw.githubusercontent.com/chiakge/Linux-NetSpeed/master/tcp.sh" && chmod +x tcp.sh 
 wget --no-check-certificate https://github.com/V2RaySSR/Trojan/raw/master/Trojan.sh && chmod +x Trojan.sh 
 mv -f Trojan.sh old-trojan.sh
