@@ -31,12 +31,10 @@ hwclock --systohc
 ##下载相关文件
 echo && echo && echo
 echo -e "\033[1;32m 下载相关文件 \033[0m"
-wget https://raw.githubusercontent.com/imzhucn/ubuntu_base/master/clash.sh  && chmod +x clash.sh
-wget -N --no-check-certificate "https://raw.githubusercontent.com/chiakge/Linux-NetSpeed/master/tcp.sh" && chmod +x tcp.sh 
-wget --no-check-certificate https://github.com/V2RaySSR/Trojan/raw/master/Trojan.sh && chmod +x Trojan.sh 
-mv -f Trojan.sh old-trojan.sh
-wget --no-check-certificate https://git.io/trojan-install  && chmod +x trojan-install 
-mv -f trojan-install new-trojan.sh
+wget https://raw.githubusercontent.com/imzhucn/ubuntu_base/master/clash.sh -O clash.sh && chmod +x clash.sh
+wget https://raw.githubusercontent.com/chiakge/Linux-NetSpeed/master/tcp.sh -O tcp.sh && chmod +x tcp.sh 
+wget https://github.com/V2RaySSR/Trojan/raw/master/Trojan.sh -O old-trojan.sh && chmod +x old-trojan.sh 
+wget --no-check-certificate https://git.io/trojan-install -O new-trojan.sh && chmod +x new-trojan.sh 
 wget --no-check-certificate https://git.io/trojan.txt -O trojan.txt
 wget https://github.com/fatedier/frp/releases/download/v0.37.0/frp_0.37.0_linux_amd64.tar.gz -O frp_0.37.0_linux_amd64.tar.gz
 tar zxvf frp_*.tar.gz
@@ -52,27 +50,6 @@ wget --no-check-certificate https://raw.githubusercontent.com/imzhucn/ubuntu_bas
 #mv -f frps.service /usr/lib/systemd/system/frps.service
 systemctl daemon-reload
 systemctl enable frps
-
-
-
-#sed -i 's:/usr/local/bin/trojan web -p 81:/usr/local/bin/trojan web:g' /etc/systemd/system/trojan-web.service
-#sed -i 's:/usr/local/bin/trojan web -p 81:/usr/local/bin/trojan web:g' /etc/systemd/system/trojan-web.service
-#sed -i 's:/usr/local/bin/trojan web -p 81:/usr/local/bin/trojan web:g' /etc/systemd/system/trojan-web.service
-#sed -i 's:/usr/local/bin/trojan web:/usr/local/bin/trojan web -p 81:g' /etc/systemd/system/trojan-web.service
-#systemctl daemon-reload
-#systemctl restart trojan-web
-
-#yum install -y nginx
-
-#sed -i 's:/usr/share/nginx/html:/root/www:g' /etc/nginx/nginx.conf
-#wget https://github.com/imzhucn/ubuntu_base/raw/master/web.zip
-#unzip web.zip
-#mv -f /usr/share/nginx/html /usr/share/nginx/html_old
-#mv -f web /usr/share/nginx/html
-#systemctl enable nginx.service
-#systemctl restart nginx
-#systemctl status nginx
-
 
 
 ##改ROOT密码
