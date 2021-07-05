@@ -15,10 +15,10 @@ fi
 read -p "输入名称和密码:" mima
 
 
-cp -rf /usr/share/nginx/html/clash.yaml "/usr/share/nginx/html/$mima.yaml"
-sed -i "s/mimamima/$mima/g" "/usr/share/nginx/html/$mima.yaml"
-sed -i "s/wangzhiwangzhi/$wangzhi/g" "/usr/share/nginx/html/$mima.yaml"
-sed -i "s/imzhu.vip/$wangzhi/g" "/usr/share/nginx/html/$mima.yaml"
+cp -rf /usr/share/nginx/html/clash.yaml "/usr/share/nginx/html/$mima"
+sed -i "s/mimamima/$mima/g" "/usr/share/nginx/html/$mima"
+sed -i "s/wangzhiwangzhi/$wangzhi/g" "/usr/share/nginx/html/$mima"
+sed -i "s/imzhu.vip/$wangzhi/g" "/usr/share/nginx/html/$mima"
 echo -e "\n\n 链接："
-echo -e "http://$wangzhi/$mima.yaml \n\n"
+echo -e "http://$wangzhi/$mima \n\n"
 
