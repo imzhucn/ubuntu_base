@@ -1,5 +1,5 @@
 proxies:
-  - {name: imzhu.vip, server: wangzhiwangzhi, port: 443, type: trojan, password: mimamima, sni: wangzhiwangzhi, skip-cert-verify: false}
+  - {name: imzhu.vip, server: wangzhiwangzhi, port: 443, type: trojan, password: mimamima, sni: wangzhiwangzhi, skip-cert-verify: true}
 proxy-groups:
   - name: 🚀 节点选择
     type: select
