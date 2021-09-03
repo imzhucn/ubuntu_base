@@ -9,6 +9,19 @@ echo root:$val|chpasswd
 
 clear
 
+
+##关闭IPV6
+echo && echo && echo
+echo -e "\033[1;32m 关闭IPV6 \033[0m"
+echo "net.ipv6.conf.all.disable_ipv6=1" >>/etc/sysctl.conf
+echo "NETWORKING_IPV6=no" >>/etc/sysconfig/network
+sed -i 's/IPV6INIT="yes"/IPV6INIT="no"/g' /etc/sysconfig/network-scripts/ifcfg-eth0
+sed -i 's/GRUB_CMDLINE_LINUX="net/GRUB_CMDLINE_LINUX="ipv6.disable=1 net/g' /etc/default/grub
+grub2-mkconfig -o /boot/grub2/grub.cfg
+systemctl disable ip6tables.service
+clear
+
+
 ##基础环境构建
 echo && echo && echo
 echo -e "\033[1;32m 基础环境构建 \033[0m"
