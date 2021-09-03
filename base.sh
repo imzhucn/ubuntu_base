@@ -50,6 +50,7 @@ clear
 ##下载相关文件
 echo && echo && echo
 echo -e "\033[1;32m 下载相关文件 \033[0m"
+wget https://raw.githubusercontent.com/helloxz/mping/master/mping.sh -O mping.sh && chmod +x mping.sh
 wget https://raw.githubusercontent.com/chiakge/Linux-NetSpeed/master/tcp.sh -O tcp.sh && chmod +x tcp.sh 
 wget https://github.com/V2RaySSR/Trojan/raw/master/Trojan.sh -O old-trojan.sh && chmod +x old-trojan.sh 
 wget https://git.io/trojan-install -O new-trojan.sh && chmod +x new-trojan.sh 
