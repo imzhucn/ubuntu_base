@@ -43,7 +43,8 @@ source ~/.bashrc
 ls -l --color=auto
 ###修改时区
 rm -rf /etc/localtime
-ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+ln -s usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+ls -l /etc/localtime
 ntpdate ntp1.aliyun.com
 /sbin/hwclock --systohc
 echo '/root/frps.sh' >> /etc/rc.d/rc.local
