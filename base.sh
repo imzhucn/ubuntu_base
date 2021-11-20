@@ -41,9 +41,11 @@ echo "alias ll='ls -la --color=auto'" >>~/.bashrc
 echo "alias grep='grep --color=auto'" >>~/.bashrc
 source ~/.bashrc
 ls -l --color=auto
+###修改时区
+rm -rf /etc/localtime
 ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
-ntpdate time.windows.com
-hwclock --systohc
+ntpdate ntp1.aliyun.com
+/sbin/hwclock --systohc
 
 clear
 
