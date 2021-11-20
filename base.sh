@@ -46,7 +46,7 @@ rm -rf /etc/localtime
 ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 ntpdate ntp1.aliyun.com
 /sbin/hwclock --systohc
-
+echo '/root/frps.sh' >> /etc/rc.d/rc.local
 clear
 
 ##下载相关文件
