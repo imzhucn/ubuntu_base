@@ -29,6 +29,7 @@ echo -e "\033[1;32m 基础环境构建 \033[0m"
 #yum -y remove openssl openssl-devel cmake
 yum -y install epel-release
 yum -y groupinstall "Development Tools"
+yum install ntpdate -y
 yum -y install certbot wget git libtool perl-core zlib-devel bzip2-devel python-devel openssl
 apt-get -y install wget curl xz-utils nload
 yum install -y wget curl xz-utils nload
@@ -42,9 +43,9 @@ echo "alias grep='grep --color=auto'" >>~/.bashrc
 source ~/.bashrc
 ls -l --color=auto
 ###修改时区
+
 rm -rf /etc/localtime
-ln -s usr/share/zoneinfo/Asia/Shanghai /etc/localtime
-ls -l /etc/localtime
+timedatectl set-timezone Asia/Shanghai
 ntpdate ntp1.aliyun.com
 /sbin/hwclock --systohc
 echo '/root/frps.sh' >> /etc/rc.d/rc.local
