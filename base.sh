@@ -100,7 +100,7 @@ rm -rf web.zip
 systemctl enable nginx.service
 systemctl restart nginx
 systemctl status nginx
-wget https://github.com/imzhucn/ubuntu_base/blob/master/Clash.NET.x64.7z -O /usr/share/nginx/html/Clash.NET.x64.7z
+wget https://github.com/imzhucn/ubuntu_base/raw/master/Clash.NET.x64.7z -O /usr/share/nginx/html/Clash.NET.x64.7z
 wget https://github.com/Kr328/ClashForAndroid/releases/download/v2.4.14/cfa-2.4.14-premium-arm64-v8a-release.apk -O /usr/share/nginx/html/app-foss-arm64-v8a-release.apk
 wget https://raw.githubusercontent.com/imzhucn/ubuntu_base/master/clash.yaml -O /usr/share/nginx/html/clash.yaml
 wget https://raw.githubusercontent.com/imzhucn/ubuntu_base/master/clash.sh -O clash.sh && chmod +x clash.sh
