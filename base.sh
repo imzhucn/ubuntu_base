@@ -5,7 +5,12 @@ echo && echo && echo && echo && echo
 echo -e "\033[1;32m 改ROOT密码 \033[0m"
 echo -e "\033[1;32m 输入密码: \033[0m"
 read -p "输入密码:" val echo $val
-echo root:$val|chpasswd
+echo -e "\033[1;32m 服务器标识: \033[0m"
+read -p "服务器标识:" val echo $biaoshi
+echo root:$val|sudo chpasswd root
+sudo sed -i 's/^#\?PermitRootLogin.*/PermitRootLogin yes/g' /etc/ssh/sshd_config;
+sudo sed -i 's/^#\?PasswordAuthentication.*/PasswordAuthentication yes/g' /etc/ssh/sshd_config;
+sudo service sshd restart
 
 clear
 
@@ -34,9 +39,7 @@ yum -y install certbot wget git libtool perl-core zlib-devel bzip2-devel python-
 apt-get -y install wget curl xz-utils nload
 yum install -y wget curl xz-utils nload
 yum install -y psmisc
-sed -i 's/PermitRootLogin no/PermitRootLogin yes/g' /etc/ssh/sshd_config
-sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/g' /etc/ssh/sshd_config
-service sshd restart
+
 echo "alias ls='ls --color'" >>~/.bashrc
 echo "alias ll='ls -la --color=auto'" >>~/.bashrc
 echo "alias grep='grep --color=auto'" >>~/.bashrc
@@ -69,15 +72,10 @@ rm -rf .frp/frps_full.ini
 wget https://raw.githubusercontent.com/imzhucn/ubuntu_base/master/frps.sh -O frps.sh && chmod +x frps.sh
 wget https://raw.githubusercontent.com/imzhucn/ubuntu_base/master/frps.ini -O .frp/frps.ini
 wget https://raw.githubusercontent.com/imzhucn/ubuntu_base/master/frps.service -O /usr/lib/systemd/system/frps.service && chmod +x /usr/lib/systemd/system/frps.service
-#echo -e "\033[1;32m 改密码前 \033[0m"
-#cat ~/.frp/frps.ini
-#sleep 10
+
 sed -i "s/token = admin/token = $val/g" ~/.frp/frps.ini
 sed -i "s/dashboard_pwd = admin/dashboard_pwd = $val/g" ~/.frp/frps.ini
-#sleep 3
-#echo -e "\033[1;32m 改密码后 \033[0m"
-#cat ~/.frp/frps.ini
-#sleep 30
+
 systemctl daemon-reload
 systemctl enable frps
 
@@ -86,6 +84,7 @@ clear
 ##开始安装trojan和nginx
 echo && echo && echo
 echo -e "\033[1;32m 开始安装trojan和nginx \033[0m"
+killall nginx
 bash /root/new-trojan.sh
 sed -i 's:/usr/local/bin/trojan web -p 81:/usr/local/bin/trojan web:g' /etc/systemd/system/trojan-web.service
 sed -i 's:/usr/local/bin/trojan web:/usr/local/bin/trojan web -p 81:g' /etc/systemd/system/trojan-web.service
@@ -97,6 +96,10 @@ wget https://github.com/imzhucn/ubuntu_base/raw/master/web.zip -O web.zip
 rm -rf /usr/share/nginx/html/index.html
 unzip -o -d /usr/share/nginx/html /root/web.zip 
 rm -rf web.zip
+wget https://raw.githubusercontent.com/imzhucn/ubuntu_base/master/vps.html -O /usr/share/nginx/html/
+sed -i 's:<h1>Hello</h1>:<h1>Hello--[$biaoshi]</h1>:g' /usr/share/nginx/html/vps.html
+sed -i 's:speedtest-x<:speedtest-x--[$biaoshi]<:g' /usr/share/nginx/html/sp/index.html
+
 systemctl enable nginx.service
 systemctl restart nginx
 systemctl status nginx
@@ -109,28 +112,28 @@ wget https://download.visualstudio.microsoft.com/download/pr/78fa839b-2d86-4ece-
 clear
 
 ##卸载阿里云盾
-echo && echo && echo
-echo -e "\033[1;32m 卸载阿里云盾 \033[0m"
-wget http://update.aegis.aliyun.com/download/uninstall.sh -O uninstall.sh && bash uninstall.sh && rm -rf uninstall.sh
-wget http://update.aegis.aliyun.com/download/quartz_uninstall.sh -O quartz_uninstall.sh && bash quartz_uninstall.sh && rm -rf quartz_uninstall.sh
-pkill aliyun-service
-rm -fr /etc/init.d/agentwatch /usr/sbin/aliyun-service
-rm -rf /usr/local/aegis*
-iptables -I INPUT -s 140.205.201.0/28 -j DROP
-iptables -I INPUT -s 140.205.201.16/29 -j DROP
-iptables -I INPUT -s 140.205.201.32/28 -j DROP
-iptables -I INPUT -s 140.205.225.192/29 -j DROP
-iptables -I INPUT -s 140.205.225.200/30 -j DROP
-iptables -I INPUT -s 140.205.225.184/29 -j DROP
-iptables -I INPUT -s 140.205.225.183/32 -j DROP
-iptables -I INPUT -s 140.205.225.206/32 -j DROP
-iptables -I INPUT -s 140.205.225.205/32 -j DROP
-iptables -I INPUT -s 140.205.225.195/32 -j DROP
-iptables -I INPUT -s 140.205.225.204/32 -j DROP
-rm -rf /usr/sbin/aliyun*
-chkconfig --del cloudmonitor
+#echo && echo && echo
+#echo -e "\033[1;32m 卸载阿里云盾 \033[0m"
+#wget http://update.aegis.aliyun.com/download/uninstall.sh -O uninstall.sh && bash uninstall.sh && rm -rf uninstall.sh
+#wget http://update.aegis.aliyun.com/download/quartz_uninstall.sh -O quartz_uninstall.sh && bash quartz_uninstall.sh && rm -rf quartz_uninstall.sh
+#pkill aliyun-service
+#rm -fr /etc/init.d/agentwatch /usr/sbin/aliyun-service
+#rm -rf /usr/local/aegis*
+#iptables -I INPUT -s 140.205.201.0/28 -j DROP
+#iptables -I INPUT -s 140.205.201.16/29 -j DROP
+#iptables -I INPUT -s 140.205.201.32/28 -j DROP
+#iptables -I INPUT -s 140.205.225.192/29 -j DROP
+#iptables -I INPUT -s 140.205.225.200/30 -j DROP
+#iptables -I INPUT -s 140.205.225.184/29 -j DROP
+#iptables -I INPUT -s 140.205.225.183/32 -j DROP
+#iptables -I INPUT -s 140.205.225.206/32 -j DROP
+#iptables -I INPUT -s 140.205.225.205/32 -j DROP
+#iptables -I INPUT -s 140.205.225.195/32 -j DROP
+#iptables -I INPUT -s 140.205.225.204/32 -j DROP
+#rm -rf /usr/sbin/aliyun*
+#chkconfig --del cloudmonitor
 
-clear
+#clear
 
 ##开始安装BBR加速
 echo && echo && echo
