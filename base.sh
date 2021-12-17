@@ -97,8 +97,8 @@ rm -rf /usr/share/nginx/html/index.html
 unzip -o -d /usr/share/nginx/html /root/web.zip 
 rm -rf web.zip
 wget https://raw.githubusercontent.com/imzhucn/ubuntu_base/master/vps.html -O /usr/share/nginx/html/vps.html
-sed -i 's:<h1>Hello</h1>:<h1>Hello--[$biaoshi]</h1>:g' /usr/share/nginx/html/vps.html
-sed -i 's:speedtest-x<:speedtest-x--[$biaoshi]<:g' /usr/share/nginx/html/sp/index.html
+sed -i "s:服务器名称:$biaoshi:g" /usr/share/nginx/html/vps.html
+sed -i "s:服务器名称:$biaoshi:g" /usr/share/nginx/html/sp/index.html
 
 systemctl enable nginx.service
 systemctl restart nginx
