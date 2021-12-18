@@ -150,7 +150,7 @@ clear
 ##开始安装BBR加速
 echo && echo && echo
 echo -e "\033[1;32m 开始安装BBR加速 \033[0m"
-echo "1" |bash tcp.sh
+bash tcp.sh
 
 
 
