@@ -100,6 +100,18 @@ wget https://raw.githubusercontent.com/imzhucn/ubuntu_base/master/vps.html -O /u
 sed -i "s:服务器名称:$biaoshi:g" /usr/share/nginx/html/vps.html
 sed -i "s:服务器名称:$biaoshi:g" /usr/share/nginx/html/sp/index.html
 
+yum install -y php php-fpm
+sed -i "s/user = apache/user = nginx/g" /etc/php-fpm.d/www.conf
+sed -i "s/group = apache/group = nginx/g" /etc/php-fpm.d/www.conf
+
+wget https://raw.githubusercontent.com/imzhucn/ubuntu_base/master/nginx.conf -O /etc/nginx/nginx.conf
+
+
+systemctl enable php-fpm
+systemctl restart php-fpm
+systemctl restart nginx
+
+
 systemctl enable nginx.service
 systemctl restart nginx
 systemctl status nginx
@@ -108,7 +120,7 @@ wget https://github.com/Kr328/ClashForAndroid/releases/download/v2.4.14/cfa-2.4.
 wget https://raw.githubusercontent.com/imzhucn/ubuntu_base/master/clash.yaml -O /usr/share/nginx/html/clash.yaml
 wget https://raw.githubusercontent.com/imzhucn/ubuntu_base/master/clash.sh -O clash.sh && chmod +x clash.sh
 wget https://download.visualstudio.microsoft.com/download/pr/78fa839b-2d86-4ece-9d97-5b9fe6fb66fa/10d406c0d247470daa80691d3b3460a6/windowsdesktop-runtime-5.0.10-win-x64.exe  -O /usr/share/nginx/html/net.exe
-
+wget https://github.com/imzhucn/ubuntu_base/raw/master/tz.php -O /usr/share/nginx/html/tz.php
 clear
 
 ##卸载阿里云盾
