@@ -6,7 +6,7 @@ echo -e "\033[1;32m 改ROOT密码 \033[0m"
 echo -e "\033[1;32m 输入密码: \033[0m"
 read -p "输入密码:" val echo $val
 echo -e "\033[1;32m 服务器标识: \033[0m"
-read -p "服务器标识:" val echo $biaoshi
+read -p "服务器标识:"  echo $biaoshi
 echo root:$val |sudo chpasswd root
 sudo sed -i 's/^#\?PermitRootLogin.*/PermitRootLogin yes/g' /etc/ssh/sshd_config;
 sudo sed -i 's/^#\?PasswordAuthentication.*/PasswordAuthentication yes/g' /etc/ssh/sshd_config;
