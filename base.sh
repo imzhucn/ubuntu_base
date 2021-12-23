@@ -35,7 +35,7 @@ echo -e "\033[1;32m 基础环境构建 \033[0m"
 yum -y install epel-release
 yum -y groupinstall "Development Tools"
 yum install ntpdate -y
-yum -y install certbot wget git libtool perl-core zlib-devel bzip2-devel python-devel openssl
+yum -y install certbot wget git libtool perl-core zlib-devel bzip2-devel python-devel openssl telnet
 apt-get -y install wget curl xz-utils nload
 yum install -y wget curl xz-utils nload
 yum install -y psmisc
