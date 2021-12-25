@@ -12,10 +12,10 @@ sudo sed -i 's/^#\?PermitRootLogin.*/PermitRootLogin yes/g' /etc/ssh/sshd_config
 sudo sed -i 's/^#\?PasswordAuthentication.*/PasswordAuthentication yes/g' /etc/ssh/sshd_config;
 sudo service sshd restart
 
-clear
 
 
-##关闭IPV6
+
+##关闭IPV6、防火墙
 echo && echo && echo
 echo -e "\033[1;32m 关闭IPV6 \033[0m"
 echo "net.ipv6.conf.all.disable_ipv6=1" >>/etc/sysctl.conf
@@ -24,7 +24,8 @@ sed -i 's/IPV6INIT="yes"/IPV6INIT="no"/g' /etc/sysconfig/network-scripts/ifcfg-e
 sed -i 's/GRUB_CMDLINE_LINUX="net/GRUB_CMDLINE_LINUX="ipv6.disable=1 net/g' /etc/default/grub
 grub2-mkconfig -o /boot/grub2/grub.cfg
 systemctl disable ip6tables.service
-clear
+systemctl disable firewalld.service
+
 
 
 ##基础环境构建
@@ -52,7 +53,7 @@ timedatectl set-timezone Asia/Shanghai
 ntpdate ntp1.aliyun.com
 /sbin/hwclock --systohc
 echo '/root/frps.sh' >> /etc/rc.d/rc.local
-clear
+
 
 ##下载相关文件
 echo && echo && echo
@@ -79,7 +80,7 @@ sed -i "s/dashboard_pwd = admin/dashboard_pwd = $val/g" ~/.frp/frps.ini
 systemctl daemon-reload
 systemctl enable frps
 
-clear
+
 
 ##开始安装trojan和nginx
 echo && echo && echo
@@ -121,7 +122,7 @@ wget https://raw.githubusercontent.com/imzhucn/ubuntu_base/master/clash.yaml -O 
 wget https://raw.githubusercontent.com/imzhucn/ubuntu_base/master/clash.sh -O clash.sh && chmod +x clash.sh
 wget https://download.visualstudio.microsoft.com/download/pr/78fa839b-2d86-4ece-9d97-5b9fe6fb66fa/10d406c0d247470daa80691d3b3460a6/windowsdesktop-runtime-5.0.10-win-x64.exe  -O /usr/share/nginx/html/net.exe
 wget https://github.com/imzhucn/ubuntu_base/raw/master/tz.php -O /usr/share/nginx/html/tz.php
-clear
+
 
 ##卸载阿里云盾
 #echo && echo && echo
