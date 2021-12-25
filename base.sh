@@ -17,7 +17,7 @@ sudo service sshd restart
 
 ##关闭IPV6、防火墙
 echo && echo && echo
-echo -e "\033[1;32m 关闭IPV6 \033[0m"
+echo -e "\033[1;32m 关闭IPV6、防火墙 \033[0m"
 echo "net.ipv6.conf.all.disable_ipv6=1" >>/etc/sysctl.conf
 echo "NETWORKING_IPV6=no" >>/etc/sysconfig/network
 sed -i 's/IPV6INIT="yes"/IPV6INIT="no"/g' /etc/sysconfig/network-scripts/ifcfg-eth0
