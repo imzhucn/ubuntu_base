@@ -26,8 +26,8 @@ grub2-mkconfig -o /boot/grub2/grub.cfg
 systemctl disable ip6tables.service
 systemctl disable firewalld.service
 #开BBR，原版
-echo “net.core.default_qdisc=fq” >> /etc/sysctl.conf
-echo “net.ipv4.tcp_congestion_control=bbr” >> /etc/sysctl.conf
+echo "net.core.default_qdisc=fq" >> /etc/sysctl.conf
+echo "net.ipv4.tcp_congestion_control=bbr" >> /etc/sysctl.conf
 sysctl -p
 
 
