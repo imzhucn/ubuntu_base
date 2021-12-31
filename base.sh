@@ -152,9 +152,9 @@ wget https://github.com/imzhucn/ubuntu_base/raw/master/tz.php -O /usr/share/ngin
 #clear
 
 ##开始安装BBR加速
-echo && echo && echo
-echo -e "\033[1;32m 开始安装BBR加速 \033[0m"
-bash tcp.sh
+#echo && echo && echo
+#echo -e "\033[1;32m 开始安装BBR加速 \033[0m"
+#bash tcp.sh
 
 
 
