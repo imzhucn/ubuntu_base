@@ -185,7 +185,7 @@ bbr(){
     read -p "警告！！！跟甲骨文不兼容！！确定安装输入520" tcp
     if [[$tcp == "520"]];then
     bash tcp.sh
-    if
+    fi
 	start_menu
 }
 
