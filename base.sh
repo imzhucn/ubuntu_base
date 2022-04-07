@@ -206,10 +206,11 @@ Update_Shell(){
 			echo && echo "	已取消..." && echo
 		fi
 	else
-		echo -e "当前已是最新版本[ ${sh_new_ver} ] !"
+		echo -e "当前已是最新版本[ ${sh_new_ver} ] ，无需升级!"
 		sleep 5s
+		start_menu
 	fi
-	start_menu
+	
 	
 }
 
