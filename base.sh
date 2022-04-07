@@ -271,7 +271,7 @@ echo && echo -e " imzhu.sh 懒人脚本
  ${Green_font_prefix}10.${Font_color_suffix} 退出脚本
 ————————————————————————————————" && echo
 syscheck
-echo ${release} $version $bit
+	echo -e ${Tip} ${release} $version $bit ${Font_color_suffix}
 	
 echo
 read -p " 请输入数字 [0-11]:" num
