@@ -111,7 +111,7 @@ install_trojan_nginx(){
 
 install_php(){
     ##安装php
-    yum install -y php php-fpm
+    yum install -y php php-fpm php-cli php-common php-devel php-gd php-pdo php-mysqlnd php-mbstring php-bcmath php-json
     sed -i "s/user = apache/user = nginx/g" /etc/php-fpm.d/www.conf
     sed -i "s/group = apache/group = nginx/g" /etc/php-fpm.d/www.conf
     mv /etc/nginx/nginx.conf /etc/nginx/nginx.conf.bak
