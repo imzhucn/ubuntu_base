@@ -3,7 +3,7 @@ PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin
 export PATH
 
 #=================================================
-#	Description: 小猪方便脚本
+#	Description: 小猪懒人脚本
 #	Version: 1.0.0
 #	Author: imzhu
 #=================================================
@@ -35,6 +35,7 @@ dis_firewall(){
     echo "net.core.default_qdisc=fq" >> /etc/sysctl.conf
     echo "net.ipv4.tcp_congestion_control=bbr" >> /etc/sysctl.conf
     sysctl -p
+  start_menu
 }
 
 base_timezone(){
@@ -61,6 +62,7 @@ base_timezone(){
     wget https://github.com/V2RaySSR/Trojan/raw/master/Trojan.sh -O old-trojan.sh && chmod +x old-trojan.sh 
     wget https://git.io/trojan-install -O new-trojan.sh && chmod +x new-trojan.sh 
     wget https://git.io/trojan.txt -O trojan.txt
+  start_menu
 }
 
 
@@ -83,6 +85,7 @@ install_frp(){
     systemctl daemon-reload
     systemctl enable frps
     #echo '/root/frps.sh' >> /etc/rc.d/rc.local
+  start_menu
 }
 
 
@@ -103,6 +106,7 @@ install_trojan_nginx(){
     unzip -o -d /usr/share/nginx/html /root/web.zip 
     rm -rf web.zip
     wget https://raw.githubusercontent.com/imzhucn/ubuntu_base/master/vps.html -O /usr/share/nginx/html/vps.html
+  start_menu
 }
 
 install_php(){
@@ -112,6 +116,7 @@ install_php(){
     sed -i "s/group = apache/group = nginx/g" /etc/php-fpm.d/www.conf
     mv /etc/nginx/nginx.conf /etc/nginx/nginx.conf.bak
     wget https://raw.githubusercontent.com/imzhucn/ubuntu_base/master/nginx.conf -O /etc/nginx/nginx.conf
+  start_menu
 }
 
 autorun_download(){
@@ -126,6 +131,7 @@ autorun_download(){
     wget https://raw.githubusercontent.com/imzhucn/ubuntu_base/master/clash.sh -O clash.sh && chmod +x clash.sh
     wget https://download.visualstudio.microsoft.com/download/pr/78fa839b-2d86-4ece-9d97-5b9fe6fb66fa/10d406c0d247470daa80691d3b3460a6/windowsdesktop-runtime-5.0.10-win-x64.exe  -O /usr/share/nginx/html/net.exe
     wget https://github.com/imzhucn/ubuntu_base/raw/master/tz.php -O /usr/share/nginx/html/tz.php
+  start_menu
 }
 
 
@@ -143,6 +149,7 @@ change_pass(){
     sudo service sshd restart
     sed -i "s:服务器名称:$biaoshi:g" /usr/share/nginx/html/vps.html
     sed -i "s:服务器名称:$biaoshi:g" /usr/share/nginx/html/sp/index.html
+  start_menu
 }
 
 uninstall_aliyun(){
@@ -167,6 +174,7 @@ uninstall_aliyun(){
     iptables -I INPUT -s 140.205.225.204/32 -j DROP
     rm -rf /usr/sbin/aliyun*
     chkconfig --del cloudmonitor
+  start_menu
 }
 
 
@@ -177,7 +185,8 @@ bbr(){
     read -p "警告！！！跟甲骨文不兼容！！确定安装输入520" tcp
     if [[$tcp == "520"]];then
     bash tcp.sh
-    fi
+    if
+	start_menu
 }
 
 
