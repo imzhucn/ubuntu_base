@@ -7,7 +7,7 @@ export PATH
 #	Author: imzhu
 #=================================================
 
-sh_ver="1.0.4"
+sh_ver="1.0.5"
 github="raw.githubusercontent.com/imzhucn/ubuntu_base/master"
 
 Green_font_prefix="\033[32m" && Red_font_prefix="\033[31m" && Green_background_prefix="\033[42;37m" && Red_background_prefix="\033[41;37m" && Font_color_suffix="\033[0m"
@@ -124,6 +124,7 @@ install_trojan_nginx(){
 install_php(){
     ##安装php
     yum install -y php php-fpm php-cli php-common php-devel php-gd php-pdo php-mysqlnd php-mbstring php-bcmath php-json
+    sed -i "s/display_errors = Off/display_errors = On/g" /etc/php.ini
     sed -i "s/user = apache/user = nginx/g" /etc/php-fpm.d/www.conf
     sed -i "s/group = apache/group = nginx/g" /etc/php-fpm.d/www.conf
     mv /etc/nginx/nginx.conf /etc/nginx/nginx.conf.bak
