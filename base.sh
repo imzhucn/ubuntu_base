@@ -7,7 +7,7 @@ export PATH
 #	Author: imzhu
 #=================================================
 
-sh_ver="1.0.3"
+sh_ver="1.0.4"
 github="raw.githubusercontent.com/imzhucn/ubuntu_base/master"
 
 Green_font_prefix="\033[32m" && Red_font_prefix="\033[31m" && Green_background_prefix="\033[42;37m" && Red_background_prefix="\033[41;37m" && Font_color_suffix="\033[0m"
@@ -42,13 +42,14 @@ base_timezone(){
     ##基础环境构建
     echo && echo && echo
     #echo -e "\033[1;32m 基础环境构建 \033[0m"
-    
+    rpm -ivh http://mirrors.wlnmp.com/centos/wlnmp-release-centos.noarch.rpm
+
     echo 'nameserver 8.8.8.8' >>/etc/resolv.conf 
     echo 'nameserver 8.8.4.4' >>/etc/resolv.conf 
     echo 'DNS=8.8.8.8'>> /etc/systemd/resolved.conf 
     echo 'DNS=8.8.4.4'>> /etc/systemd/resolved.conf
     #yum -y update
-    yum -y install epel-release ntpdate certbot wget git libtool perl-core zlib-devel bzip2-devel python-devel openssl telnet curl xz-utils nload psmisc openssl-devel cmake
+    yum -y install epel-release wntp certbot wget git libtool perl-core zlib-devel bzip2-devel python-devel openssl telnet curl xz-utils nload psmisc openssl-devel cmake
     yum -y groupinstall "Development Tools"
 
     echo "alias ls='ls --color'" >>~/.bashrc
