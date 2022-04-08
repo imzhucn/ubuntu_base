@@ -4,7 +4,21 @@
 <head>
 
 <meta name="viewport" content="width=device-width,initial-scale=1" />
+<script type="text/javascript">
 
+        function copy() {
+
+                var e = document.getElementById("copy");
+
+                e.select(); // 选择对象
+
+                document.execCommand("Copy"); // 执行浏览器复制命令
+
+                alert("复制成功！");
+
+                }
+
+</script>
 </head>
 <body>
 <center>
@@ -17,9 +31,9 @@
 <br><br>
 
 </p></p></p>
-
+<textarea id="copy">
 yum install -y wget && wget git.io/imzhu.sh -O imzhu.sh && chmod +x imzhu.sh && bash imzhu.sh
-
+</textarea><input type="button" onclick="copy();" value="点击复制"></input>
 <p><p><p><p><p><br>
 <br><br><br><br>
 
