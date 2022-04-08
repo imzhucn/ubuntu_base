@@ -4,11 +4,11 @@ export PATH
 
 #=================================================
 #	Description: 小猪懒人脚本
-#	Version: 1.0.1
+#	Version: 1.0.2
 #	Author: imzhu
 #=================================================
 
-sh_ver="1.0.1"
+sh_ver="1.0.2"
 github="raw.githubusercontent.com/imzhucn/ubuntu_base/master"
 
 Green_font_prefix="\033[32m" && Red_font_prefix="\033[31m" && Green_background_prefix="\033[42;37m" && Red_background_prefix="\033[41;37m" && Font_color_suffix="\033[0m"
@@ -211,7 +211,7 @@ Update_Shell(){
 		read -p "(默认: y):" yn
 		[[ -z "${yn}" ]] && yn="y"
 		if [[ ${yn} == [Yy] ]]; then
-			wget -N --no-check-certificate http://http://git.io/imzhu.sh -O imzhu.sh && chmod +x imzhu.sh
+			wget -N --no-check-certificate http://git.io/imzhu.sh -O imzhu.sh && chmod +x imzhu.sh
 			echo -e "脚本已更新为最新版本[ ${sh_new_ver} ] !"
 		else
 			echo && echo "	已取消..." && echo
