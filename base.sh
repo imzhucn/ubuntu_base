@@ -281,6 +281,7 @@ echo && echo -e " imzhu.sh 懒人脚本
  ${Green_font_prefix}9.${Font_color_suffix} 单独安装BBR加速（警告！别乱点）
  ${Green_font_prefix}10.${Font_color_suffix} 退出脚本
 ————————————————————————————————" && echo
+echo $sh_ver
 syscheck
 	echo -e ${Tip} ${release} $version $bit ${Tip} ${Font_color_suffix}
 	
