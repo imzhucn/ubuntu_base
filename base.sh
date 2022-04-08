@@ -7,7 +7,7 @@ export PATH
 #	Author: imzhu
 #=================================================
 
-sh_ver="1.0.6"
+sh_ver="1.0.7"
 github="raw.githubusercontent.com/imzhucn/ubuntu_base/master"
 
 Green_font_prefix="\033[32m" && Red_font_prefix="\033[31m" && Green_background_prefix="\033[42;37m" && Red_background_prefix="\033[41;37m" && Font_color_suffix="\033[0m"
@@ -139,7 +139,7 @@ autorun_download(){
     systemctl restart nginx
     systemctl enable php-fpm
     systemctl enable nginx.service
-    wget https://github.com/Fndroid/clash_for_windows_pkg/releases/download/0.19.14/Clash.for.Windows.Setup.0.19.14.exe -O /usr/share/nginx/html/clash.exe
+    wget https://github.com/Fndroid/clash_for_windows_pkg/releases/download/0.19.14/Clash.for.Windows-0.19.14-win.7z -O /usr/share/nginx/html/clash.7z
     wget https://github.com/Kr328/ClashForAndroid/releases/download/v2.5.5/cfa-2.5.5-premium-arm64-v8a-release.apk -O /usr/share/nginx/html/app-foss-arm64-v8a-release.apk
     wget https://raw.githubusercontent.com/imzhucn/ubuntu_base/master/clash.yaml -O /usr/share/nginx/html/clash.yaml
     wget https://raw.githubusercontent.com/imzhucn/ubuntu_base/master/clash.sh -O clash.sh && chmod +x clash.sh
@@ -169,9 +169,14 @@ change_pass(){
 }
 
 uninstall_aliyun(){
-    ##卸载阿里云盾
+    ##卸载阿里云盾&甲骨文监控
     echo && echo && echo
     echo -e "\033[1;32m 卸载阿里云盾 \033[0m"
+    yum remove -y osms-agent  oracle-cloud-agent
+	systemctl disable osms-agent
+	systemctl disable oracle-cloud-agent
+	systemctl stop osms-agent
+	systemctl stop oracle-cloud-agent
     wget http://update.aegis.aliyun.com/download/uninstall.sh -O uninstall.sh && bash uninstall.sh && rm -rf uninstall.sh
     wget http://update.aegis.aliyun.com/download/quartz_uninstall.sh -O quartz_uninstall.sh && bash quartz_uninstall.sh && rm -rf quartz_uninstall.sh
     pkill aliyun-service
