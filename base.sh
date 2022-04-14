@@ -7,7 +7,7 @@ export PATH
 #	Author: imzhu
 #=================================================
 
-sh_ver="1.0.7"
+sh_ver="1.0.8"
 github="raw.githubusercontent.com/imzhucn/ubuntu_base/master"
 
 Green_font_prefix="\033[32m" && Red_font_prefix="\033[31m" && Green_background_prefix="\033[42;37m" && Red_background_prefix="\033[41;37m" && Font_color_suffix="\033[0m"
@@ -92,7 +92,7 @@ install_frp(){
 
     systemctl daemon-reload
     systemctl enable frps
-    #echo '/root/frps.sh' >> /etc/rc.d/rc.local
+    
     sleep 10
   start_menu
 }
@@ -108,9 +108,10 @@ install_trojan_nginx(){
     sed -i 's:/usr/local/bin/trojan web:/usr/local/bin/trojan web -p 81:g' /etc/systemd/system/trojan-web.service
     systemctl daemon-reload
     systemctl restart trojan-web
-    yum install -y nginx
+    mkdir /usr/share/nginx
     mkdir /usr/share/nginx/html
     ln -s /usr/share/nginx/html /root/www
+    yum install -y nginx
     wget https://github.com/imzhucn/ubuntu_base/raw/master/web.zip -O web.zip
     rm -rf /usr/share/nginx/html/index.html
     unzip -o -d /usr/share/nginx/html /root/web.zip 
