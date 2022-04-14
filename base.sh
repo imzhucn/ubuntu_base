@@ -88,8 +88,7 @@ install_frp(){
     wget https://raw.githubusercontent.com/imzhucn/ubuntu_base/master/frps.ini -O .frp/frps.ini
     wget https://raw.githubusercontent.com/imzhucn/ubuntu_base/master/frps.service -O /usr/lib/systemd/system/frps.service && chmod +x /usr/lib/systemd/system/frps.service
 
-    sed -i "s/token = admin/token = $val/g" ~/.frp/frps.ini
-    sed -i "s/dashboard_pwd = admin/dashboard_pwd = $val/g" ~/.frp/frps.ini
+   
 
     systemctl daemon-reload
     systemctl enable frps
@@ -164,6 +163,9 @@ change_pass(){
     sudo service sshd restart
     sed -i "s:服务器名称:$biaoshi:g" /usr/share/nginx/html/vps.html
     sed -i "s:服务器名称:$biaoshi:g" /usr/share/nginx/html/sp/index.html
+    
+     sed -i "s/token = admin/token = $val/g" ~/.frp/frps.ini
+    sed -i "s/dashboard_pwd = admin/dashboard_pwd = $val/g" ~/.frp/frps.ini
     sleep 10
   start_menu
 }
