@@ -7,7 +7,7 @@ export PATH
 #	Author: imzhu
 #=================================================
 
-sh_ver="1.0.9"
+sh_ver="1.0.10"
 github="raw.githubusercontent.com/imzhucn/ubuntu_base/master"
 
 Green_font_prefix="\033[32m" && Red_font_prefix="\033[31m" && Green_background_prefix="\033[42;37m" && Red_background_prefix="\033[41;37m" && Font_color_suffix="\033[0m"
@@ -64,9 +64,8 @@ base_timezone(){
     /sbin/hwclock --systohc
 
     wget https://raw.githubusercontent.com/helloxz/mping/master/mping.sh -O mping.sh && chmod +x mping.sh
-    wget https://raw.githubusercontent.com/chiakge/Linux-NetSpeed/master/tcp.sh -O tcp.sh && chmod +x tcp.sh 
-    wget https://github.com/V2RaySSR/Trojan/raw/master/Trojan.sh -O old-trojan.sh && chmod +x old-trojan.sh 
-    wget https://git.io/trojan-install -O new-trojan.sh && chmod +x new-trojan.sh 
+    wget https://git.io/oneclick && chmod +x new-trojan.sh 
+    wget https://git.io/trojan-install -O new-trojan.sh && chmod +x old-trojan.sh 
     wget https://git.io/trojan.txt -O trojan.txt
     echo "30秒后重启"
     sleep 30
