@@ -34,7 +34,7 @@ dis_firewall(){
     echo "net.core.default_qdisc=fq" >> /etc/sysctl.conf
     echo "net.ipv4.tcp_congestion_control=bbr" >> /etc/sysctl.conf
     sysctl -p
-    sleep 10
+    #sleep 10
   start_menu
 }
 
@@ -67,8 +67,8 @@ base_timezone(){
     wget https://git.io/oneclick && chmod +x new-trojan.sh 
     wget https://git.io/trojan-install -O new-trojan.sh && chmod +x old-trojan.sh 
     wget https://git.io/trojan.txt -O trojan.txt
-    echo "30秒后重启"
-    sleep 30
+    echo "0秒后重启"
+    #sleep 30
     reboot
   start_menu
 }
@@ -92,7 +92,7 @@ install_frp(){
     systemctl daemon-reload
     systemctl enable frps
     
-    sleep 10
+   # sleep 10
   start_menu
 }
 
@@ -116,7 +116,7 @@ install_trojan_nginx(){
     unzip -o -d /usr/share/nginx/html /root/web.zip 
     rm -rf web.zip
     wget https://raw.githubusercontent.com/imzhucn/ubuntu_base/master/vps.html -O /usr/share/nginx/html/vps.html
-    sleep 10
+   # sleep 10
   start_menu
 }
 
@@ -128,7 +128,7 @@ install_php(){
     sed -i "s/group = apache/group = nginx/g" /etc/php-fpm.d/www.conf
     mv /etc/nginx/nginx.conf /etc/nginx/nginx.conf.bak
     wget https://raw.githubusercontent.com/imzhucn/ubuntu_base/master/nginx.conf -O /etc/nginx/nginx.conf
-    sleep 10
+  #  sleep 10
   start_menu
 }
 
@@ -144,7 +144,7 @@ autorun_download(){
     wget https://raw.githubusercontent.com/imzhucn/ubuntu_base/master/clash.sh -O clash.sh && chmod +x clash.sh
     wget https://download.visualstudio.microsoft.com/download/pr/78fa839b-2d86-4ece-9d97-5b9fe6fb66fa/10d406c0d247470daa80691d3b3460a6/windowsdesktop-runtime-5.0.10-win-x64.exe  -O /usr/share/nginx/html/net.exe
     wget https://github.com/imzhucn/ubuntu_base/raw/master/tz.php -O /usr/share/nginx/html/tz.php
-    sleep 10
+  #  sleep 10
   start_menu
 }
 
@@ -166,7 +166,7 @@ change_pass(){
     
      sed -i "s/token = admin/token = $val/g" ~/.frp/frps.ini
     sed -i "s/dashboard_pwd = admin/dashboard_pwd = $val/g" ~/.frp/frps.ini
-    sleep 10
+   # sleep 10
   start_menu
 }
 
@@ -197,7 +197,7 @@ uninstall_aliyun(){
     iptables -I INPUT -s 140.205.225.204/32 -j DROP
     rm -rf /usr/sbin/aliyun*
     chkconfig --del cloudmonitor
-    sleep 10
+   # sleep 10
   start_menu
 }
 
@@ -231,7 +231,7 @@ Update_Shell(){
 		fi
 	else
 		echo -e "当前已是最新版本[ ${sh_new_ver} ] ，无需升级!"
-		sleep 5s
+		#sleep 5s
 		start_menu
 	fi
 	
@@ -276,7 +276,7 @@ syscheck(){
 
 #开始菜单
 start_menu(){
-clear
+#clear
 
 echo && echo -e " imzhu.sh 懒人脚本 
 
