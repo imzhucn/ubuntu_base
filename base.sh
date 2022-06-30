@@ -7,7 +7,7 @@ export PATH
 #	Author: imzhu
 #=================================================
 
-sh_ver="1.0.11"
+sh_ver="1.0.12"
 github="raw.githubusercontent.com/imzhucn/ubuntu_base/master"
 
 Green_font_prefix="\033[32m" && Red_font_prefix="\033[31m" && Green_background_prefix="\033[42;37m" && Red_background_prefix="\033[41;37m" && Font_color_suffix="\033[0m"
@@ -21,13 +21,13 @@ Tip="${Green_font_prefix}[注意]${Font_color_suffix}"
 dis_firewall(){
     ##关闭IPV6、防火墙
     echo && echo && echo
-    echo -e "\033[1;32m 关闭IPV6、防火墙 \033[0m"
-    echo "net.ipv6.conf.all.disable_ipv6=1" >>/etc/sysctl.conf
-    echo "NETWORKING_IPV6=no" >>/etc/sysconfig/network
-    sed -i 's/IPV6INIT="yes"/IPV6INIT="no"/g' /etc/sysconfig/network-scripts/ifcfg-eth0
-    sed -i 's/GRUB_CMDLINE_LINUX="net/GRUB_CMDLINE_LINUX="ipv6.disable=1 net/g' /etc/default/grub
+    echo -e "\033[1;32m 开BBR，关防火墙 \033[0m"
+    ##echo "net.ipv6.conf.all.disable_ipv6=1" >>/etc/sysctl.conf
+   ## echo "NETWORKING_IPV6=no" >>/etc/sysconfig/network
+   ## sed -i 's/IPV6INIT="yes"/IPV6INIT="no"/g' /etc/sysconfig/network-scripts/ifcfg-eth0
+  ##  sed -i 's/GRUB_CMDLINE_LINUX="net/GRUB_CMDLINE_LINUX="ipv6.disable=1 net/g' /etc/default/grub
     grub2-mkconfig -o /boot/grub2/grub.cfg
-    systemctl disable ip6tables.service
+   ## systemctl disable ip6tables.service
     systemctl disable firewalld.service
 
     #开BBR，原版
@@ -283,7 +283,7 @@ echo && echo -e " imzhu.sh 懒人脚本
   
 
  ${Green_font_prefix}0.${Font_color_suffix} 更新脚本
- ${Green_font_prefix}1.${Font_color_suffix} 关闭IPV6、防火墙
+ ${Green_font_prefix}1.${Font_color_suffix} 开BBR、关防火墙
  ${Green_font_prefix}2.${Font_color_suffix} 基础环境构建、修改时区 
  ${Green_font_prefix}3.${Font_color_suffix} 安装FRP
  ${Green_font_prefix}4.${Font_color_suffix} 安装trojan和nginx
