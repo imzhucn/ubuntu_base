@@ -35,6 +35,15 @@ dis_firewall(){
     echo "net.ipv4.tcp_congestion_control=bbr" >> /etc/sysctl.conf
     sysctl -p
     #sleep 10
+    
+    ##装ZEROTIER
+    curl -s https://install.zerotier.com/ | sudo bash
+sudo systemctl enable zerotier-one.service
+ sudo systemctl start zerotier-one.service
+ sudo zerotier-cli join 233ccaac270e46c9
+ 
+    
+    
   start_menu
 }
 
@@ -283,7 +292,7 @@ echo && echo -e " imzhu.sh 懒人脚本
   
 
  ${Green_font_prefix}0.${Font_color_suffix} 更新脚本
- ${Green_font_prefix}1.${Font_color_suffix} 开BBR、关防火墙
+ ${Green_font_prefix}1.${Font_color_suffix} 开BBR、关防火墙、装ZEROTIER
  ${Green_font_prefix}2.${Font_color_suffix} 基础环境构建、修改时区 
  ${Green_font_prefix}3.${Font_color_suffix} 安装FRP
  ${Green_font_prefix}4.${Font_color_suffix} 安装trojan和nginx
