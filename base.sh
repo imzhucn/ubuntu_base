@@ -7,7 +7,7 @@ export PATH
 #	Author: imzhu
 #=================================================
 
-sh_ver="1.0.12"
+sh_ver="1.0.13"
 github="raw.githubusercontent.com/imzhucn/ubuntu_base/master"
 
 Green_font_prefix="\033[32m" && Red_font_prefix="\033[31m" && Green_background_prefix="\033[42;37m" && Red_background_prefix="\033[41;37m" && Font_color_suffix="\033[0m"
@@ -149,6 +149,7 @@ autorun_download(){
     systemctl enable nginx.service
     wget https://github.com/Fndroid/clash_for_windows_pkg/releases/download/0.19.14/Clash.for.Windows-0.19.14-win.7z -O /usr/share/nginx/html/clash.7z
     wget https://github.com/Kr328/ClashForAndroid/releases/download/v2.5.5/cfa-2.5.5-premium-arm64-v8a-release.apk -O /usr/share/nginx/html/app-foss-arm64-v8a-release.apk
+    wget https://github.com/2dust/v2rayNG/releases/download/1.8.5/v2rayNG_1.8.5.apk -O /usr/share/nginx/html/v2rayNG_1.8.5.apk
     wget https://raw.githubusercontent.com/imzhucn/ubuntu_base/master/clash.yaml -O /usr/share/nginx/html/clash.yaml
     wget https://raw.githubusercontent.com/imzhucn/ubuntu_base/master/clash.sh -O clash.sh && chmod +x clash.sh
     wget https://download.visualstudio.microsoft.com/download/pr/78fa839b-2d86-4ece-9d97-5b9fe6fb66fa/10d406c0d247470daa80691d3b3460a6/windowsdesktop-runtime-5.0.10-win-x64.exe  -O /usr/share/nginx/html/net.exe
